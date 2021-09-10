@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.28307.1525
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoKCLCreate", "NeoKCLCreate\NeoKCLCreate.csproj", "{A448AF3D-F521-45C7-91F5-1BF0CF1E8E7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hack.io", "..\Hack.io\Hack.io\Hack.io.csproj", "{389F751D-DB2A-4746-B3BC-88E106C361CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hack.io.BCSV", "..\Hack.io\Hack.io.BCSV\Hack.io.BCSV.csproj", "{34CA21F7-2CFC-4965-8B89-8FB8CC2E4EA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hack.io.KCL", "..\Hack.io\Hack.io.KCL\Hack.io.KCL.csproj", "{85B48DCD-3F87-4113-9C7C-8CE76D4F4CD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hack.io.RARC", "..\Hack.io\Hack.io.RARC\Hack.io.RARC.csproj", "{4F4162CC-70FF-4EB9-AB34-D5FF98490C34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{A448AF3D-F521-45C7-91F5-1BF0CF1E8E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A448AF3D-F521-45C7-91F5-1BF0CF1E8E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A448AF3D-F521-45C7-91F5-1BF0CF1E8E7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{389F751D-DB2A-4746-B3BC-88E106C361CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{389F751D-DB2A-4746-B3BC-88E106C361CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{389F751D-DB2A-4746-B3BC-88E106C361CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{389F751D-DB2A-4746-B3BC-88E106C361CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34CA21F7-2CFC-4965-8B89-8FB8CC2E4EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34CA21F7-2CFC-4965-8B89-8FB8CC2E4EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34CA21F7-2CFC-4965-8B89-8FB8CC2E4EA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34CA21F7-2CFC-4965-8B89-8FB8CC2E4EA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85B48DCD-3F87-4113-9C7C-8CE76D4F4CD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85B48DCD-3F87-4113-9C7C-8CE76D4F4CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85B48DCD-3F87-4113-9C7C-8CE76D4F4CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85B48DCD-3F87-4113-9C7C-8CE76D4F4CD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F4162CC-70FF-4EB9-AB34-D5FF98490C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F4162CC-70FF-4EB9-AB34-D5FF98490C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F4162CC-70FF-4EB9-AB34-D5FF98490C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F4162CC-70FF-4EB9-AB34-D5FF98490C34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
