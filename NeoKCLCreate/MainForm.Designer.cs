@@ -38,16 +38,11 @@ namespace NeoKCLCreate
             this.SaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CollisionCodeGroupBox = new System.Windows.Forms.GroupBox();
+            this.PaGroupBox = new System.Windows.Forms.GroupBox();
             this.CameraThroughCheckBox = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.WallCodeComboBox = new System.Windows.Forms.ComboBox();
@@ -63,8 +58,13 @@ namespace NeoKCLCreate
             this.MaxTrianglesNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.SaveBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.ResetOctreeMax = new System.Windows.Forms.Button();
+            this.ResetOctreeMin = new System.Windows.Forms.Button();
+            this.PresetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.MainFormMenuStrip.SuspendLayout();
-            this.CollisionCodeGroupBox.SuspendLayout();
+            this.PaGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CameraIDNumericUpDown)).BeginInit();
             this.OctreeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MinCubeSizeNumericUpDown)).BeginInit();
@@ -75,10 +75,10 @@ namespace NeoKCLCreate
             // 
             this.MainFormMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileToolStripMenuItem,
-            this.editToolStripMenuItem});
+            this.EditToolStripMenuItem});
             this.MainFormMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainFormMenuStrip.Name = "MainFormMenuStrip";
-            this.MainFormMenuStrip.Size = new System.Drawing.Size(454, 24);
+            this.MainFormMenuStrip.Size = new System.Drawing.Size(484, 24);
             this.MainFormMenuStrip.TabIndex = 0;
             this.MainFormMenuStrip.Text = "menuStrip1";
             // 
@@ -102,7 +102,7 @@ namespace NeoKCLCreate
             this.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.NewToolStripMenuItem.Name = "NewToolStripMenuItem";
             this.NewToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.NewToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.NewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.NewToolStripMenuItem.Text = "&New";
             this.NewToolStripMenuItem.Click += new System.EventHandler(this.NewToolStripMenuItem_Click);
             // 
@@ -112,14 +112,14 @@ namespace NeoKCLCreate
             this.OpenToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
             this.OpenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.OpenToolStripMenuItem.Text = "&Open";
             this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(177, 6);
             // 
             // SaveToolStripMenuItem
             // 
@@ -127,139 +127,104 @@ namespace NeoKCLCreate
             this.SaveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
             this.SaveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveToolStripMenuItem.Text = "&Save";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // SaveAsToolStripMenuItem
             // 
             this.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem";
-            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveAsToolStripMenuItem.Text = "Save &As";
             this.SaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // ExportToolStripMenuItem
             // 
             this.ExportToolStripMenuItem.Name = "ExportToolStripMenuItem";
-            this.ExportToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.ExportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExportToolStripMenuItem.Text = "Export";
             this.ExportToolStripMenuItem.Click += new System.EventHandler(this.ExportToolStripMenuItem_Click);
             // 
-            // editToolStripMenuItem
+            // EditToolStripMenuItem
             // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.undoToolStripMenuItem,
-            this.redoToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.cutToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem,
+            this.EditToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CopyToolStripMenuItem,
+            this.PasteToolStripMenuItem,
             this.toolStripSeparator4,
-            this.selectAllToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "&Edit";
+            this.PresetsToolStripMenuItem});
+            this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.EditToolStripMenuItem.Text = "&Edit";
             // 
-            // undoToolStripMenuItem
+            // CopyToolStripMenuItem
             // 
-            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.undoToolStripMenuItem.Text = "&Undo";
+            this.CopyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("CopyToolStripMenuItem.Image")));
+            this.CopyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
+            this.CopyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CopyToolStripMenuItem.Text = "&Copy";
+            this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
-            // redoToolStripMenuItem
+            // PasteToolStripMenuItem
             // 
-            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.redoToolStripMenuItem.Text = "&Redo";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(141, 6);
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripMenuItem.Image")));
-            this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.cutToolStripMenuItem.Text = "Cu&t";
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripMenuItem.Image")));
-            this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.copyToolStripMenuItem.Text = "&Copy";
-            // 
-            // pasteToolStripMenuItem
-            // 
-            this.pasteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pasteToolStripMenuItem.Image")));
-            this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.pasteToolStripMenuItem.Text = "&Paste";
+            this.PasteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("PasteToolStripMenuItem.Image")));
+            this.PasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem";
+            this.PasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.PasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.PasteToolStripMenuItem.Text = "&Paste";
+            this.PasteToolStripMenuItem.Click += new System.EventHandler(this.PasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
-            // selectAllToolStripMenuItem
+            // PaGroupBox
             // 
-            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.selectAllToolStripMenuItem.Text = "Select &All";
-            // 
-            // CollisionCodeGroupBox
-            // 
-            this.CollisionCodeGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.PaGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CollisionCodeGroupBox.Controls.Add(this.CameraThroughCheckBox);
-            this.CollisionCodeGroupBox.Controls.Add(this.label4);
-            this.CollisionCodeGroupBox.Controls.Add(this.WallCodeComboBox);
-            this.CollisionCodeGroupBox.Controls.Add(this.FloorCodeComboBox);
-            this.CollisionCodeGroupBox.Controls.Add(this.SoundCodeComboBox);
-            this.CollisionCodeGroupBox.Controls.Add(this.label2);
-            this.CollisionCodeGroupBox.Controls.Add(this.label3);
-            this.CollisionCodeGroupBox.Controls.Add(this.CameraIDNumericUpDown);
-            this.CollisionCodeGroupBox.Controls.Add(this.label1);
-            this.CollisionCodeGroupBox.Controls.Add(this.GroupListBox);
-            this.CollisionCodeGroupBox.Location = new System.Drawing.Point(12, 112);
-            this.CollisionCodeGroupBox.Name = "CollisionCodeGroupBox";
-            this.CollisionCodeGroupBox.Size = new System.Drawing.Size(430, 213);
-            this.CollisionCodeGroupBox.TabIndex = 1;
-            this.CollisionCodeGroupBox.TabStop = false;
-            this.CollisionCodeGroupBox.Text = "Collision Codes";
+            this.PaGroupBox.Controls.Add(this.CameraThroughCheckBox);
+            this.PaGroupBox.Controls.Add(this.label4);
+            this.PaGroupBox.Controls.Add(this.WallCodeComboBox);
+            this.PaGroupBox.Controls.Add(this.FloorCodeComboBox);
+            this.PaGroupBox.Controls.Add(this.SoundCodeComboBox);
+            this.PaGroupBox.Controls.Add(this.label2);
+            this.PaGroupBox.Controls.Add(this.label3);
+            this.PaGroupBox.Controls.Add(this.CameraIDNumericUpDown);
+            this.PaGroupBox.Controls.Add(this.label1);
+            this.PaGroupBox.Controls.Add(this.GroupListBox);
+            this.PaGroupBox.Location = new System.Drawing.Point(12, 112);
+            this.PaGroupBox.Name = "PaGroupBox";
+            this.PaGroupBox.Size = new System.Drawing.Size(460, 213);
+            this.PaGroupBox.TabIndex = 1;
+            this.PaGroupBox.TabStop = false;
+            this.PaGroupBox.Text = "Collision Codes";
             // 
             // CameraThroughCheckBox
             // 
             this.CameraThroughCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CameraThroughCheckBox.AutoSize = true;
-            this.CameraThroughCheckBox.Location = new System.Drawing.Point(287, 126);
+            this.CameraThroughCheckBox.Location = new System.Drawing.Point(257, 126);
             this.CameraThroughCheckBox.Name = "CameraThroughCheckBox";
             this.CameraThroughCheckBox.Size = new System.Drawing.Size(141, 17);
             this.CameraThroughCheckBox.TabIndex = 7;
             this.CameraThroughCheckBox.Text = "Disable Camera Collision";
             this.CameraThroughCheckBox.UseVisualStyleBackColor = true;
+            this.CameraThroughCheckBox.CheckedChanged += new System.EventHandler(this.CameraThroughCheckBox_CheckedChanged);
             // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(212, 102);
+            this.label4.Location = new System.Drawing.Point(182, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 6;
@@ -272,10 +237,11 @@ namespace NeoKCLCreate
             this.WallCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.WallCodeComboBox.FormattingEnabled = true;
             this.WallCodeComboBox.IntegralHeight = false;
-            this.WallCodeComboBox.Location = new System.Drawing.Point(287, 99);
+            this.WallCodeComboBox.Location = new System.Drawing.Point(257, 99);
             this.WallCodeComboBox.Name = "WallCodeComboBox";
-            this.WallCodeComboBox.Size = new System.Drawing.Size(137, 21);
+            this.WallCodeComboBox.Size = new System.Drawing.Size(197, 21);
             this.WallCodeComboBox.TabIndex = 5;
+            this.WallCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.WallCodeComboBox_SelectedIndexChanged);
             // 
             // FloorCodeComboBox
             // 
@@ -284,28 +250,31 @@ namespace NeoKCLCreate
             this.FloorCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FloorCodeComboBox.FormattingEnabled = true;
             this.FloorCodeComboBox.IntegralHeight = false;
-            this.FloorCodeComboBox.Location = new System.Drawing.Point(287, 72);
+            this.FloorCodeComboBox.Location = new System.Drawing.Point(257, 72);
             this.FloorCodeComboBox.Name = "FloorCodeComboBox";
-            this.FloorCodeComboBox.Size = new System.Drawing.Size(137, 21);
+            this.FloorCodeComboBox.Size = new System.Drawing.Size(197, 21);
             this.FloorCodeComboBox.TabIndex = 4;
+            this.FloorCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.FloorCodeComboBox_SelectedIndexChanged);
             // 
             // SoundCodeComboBox
             // 
             this.SoundCodeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SoundCodeComboBox.DropDownHeight = 104;
             this.SoundCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SoundCodeComboBox.DropDownWidth = 160;
             this.SoundCodeComboBox.FormattingEnabled = true;
             this.SoundCodeComboBox.IntegralHeight = false;
-            this.SoundCodeComboBox.Location = new System.Drawing.Point(287, 45);
+            this.SoundCodeComboBox.Location = new System.Drawing.Point(257, 45);
             this.SoundCodeComboBox.Name = "SoundCodeComboBox";
-            this.SoundCodeComboBox.Size = new System.Drawing.Size(137, 21);
+            this.SoundCodeComboBox.Size = new System.Drawing.Size(197, 21);
             this.SoundCodeComboBox.TabIndex = 3;
+            this.SoundCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.SoundCodeComboBox_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(212, 48);
+            this.label2.Location = new System.Drawing.Point(182, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 0;
@@ -315,7 +284,7 @@ namespace NeoKCLCreate
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(212, 75);
+            this.label3.Location = new System.Drawing.Point(182, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 1;
@@ -324,27 +293,27 @@ namespace NeoKCLCreate
             // CameraIDNumericUpDown
             // 
             this.CameraIDNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CameraIDNumericUpDown.Hexadecimal = true;
-            this.CameraIDNumericUpDown.Location = new System.Drawing.Point(287, 19);
+            this.CameraIDNumericUpDown.Location = new System.Drawing.Point(257, 19);
             this.CameraIDNumericUpDown.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.CameraIDNumericUpDown.Name = "CameraIDNumericUpDown";
-            this.CameraIDNumericUpDown.Size = new System.Drawing.Size(137, 20);
+            this.CameraIDNumericUpDown.Size = new System.Drawing.Size(197, 20);
             this.CameraIDNumericUpDown.TabIndex = 2;
             this.CameraIDNumericUpDown.Value = new decimal(new int[] {
             255,
             0,
             0,
             0});
+            this.CameraIDNumericUpDown.ValueChanged += new System.EventHandler(this.CameraIDNumericUpDown_ValueChanged);
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(212, 21);
+            this.label1.Location = new System.Drawing.Point(182, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 1;
@@ -359,7 +328,7 @@ namespace NeoKCLCreate
             this.GroupListBox.IntegralHeight = false;
             this.GroupListBox.Location = new System.Drawing.Point(6, 19);
             this.GroupListBox.Name = "GroupListBox";
-            this.GroupListBox.Size = new System.Drawing.Size(200, 188);
+            this.GroupListBox.Size = new System.Drawing.Size(170, 188);
             this.GroupListBox.TabIndex = 0;
             this.GroupListBox.SelectedIndexChanged += new System.EventHandler(this.GroupListBox_SelectedIndexChanged);
             // 
@@ -367,30 +336,51 @@ namespace NeoKCLCreate
             // 
             this.OctreeGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.OctreeGroupBox.Controls.Add(this.ResetOctreeMin);
+            this.OctreeGroupBox.Controls.Add(this.ResetOctreeMax);
             this.OctreeGroupBox.Controls.Add(this.MinCubeSizeNumericUpDown);
             this.OctreeGroupBox.Controls.Add(this.MaxTrianglesNumericUpDown);
             this.OctreeGroupBox.Controls.Add(this.label6);
             this.OctreeGroupBox.Controls.Add(this.label5);
             this.OctreeGroupBox.Location = new System.Drawing.Point(12, 27);
             this.OctreeGroupBox.Name = "OctreeGroupBox";
-            this.OctreeGroupBox.Size = new System.Drawing.Size(430, 79);
+            this.OctreeGroupBox.Size = new System.Drawing.Size(460, 79);
             this.OctreeGroupBox.TabIndex = 2;
             this.OctreeGroupBox.TabStop = false;
             this.OctreeGroupBox.Text = "Octree Settings";
             // 
             // MinCubeSizeNumericUpDown
             // 
+            this.MinCubeSizeNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MinCubeSizeNumericUpDown.Location = new System.Drawing.Point(131, 45);
             this.MinCubeSizeNumericUpDown.Name = "MinCubeSizeNumericUpDown";
-            this.MinCubeSizeNumericUpDown.Size = new System.Drawing.Size(293, 20);
+            this.MinCubeSizeNumericUpDown.Size = new System.Drawing.Size(264, 20);
             this.MinCubeSizeNumericUpDown.TabIndex = 3;
+            this.MinCubeSizeNumericUpDown.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
             // 
             // MaxTrianglesNumericUpDown
             // 
+            this.MaxTrianglesNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MaxTrianglesNumericUpDown.Location = new System.Drawing.Point(131, 19);
+            this.MaxTrianglesNumericUpDown.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
             this.MaxTrianglesNumericUpDown.Name = "MaxTrianglesNumericUpDown";
-            this.MaxTrianglesNumericUpDown.Size = new System.Drawing.Size(293, 20);
+            this.MaxTrianglesNumericUpDown.Size = new System.Drawing.Size(264, 20);
             this.MaxTrianglesNumericUpDown.TabIndex = 2;
+            this.MaxTrianglesNumericUpDown.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
             // 
             // label6
             // 
@@ -410,23 +400,60 @@ namespace NeoKCLCreate
             this.label5.TabIndex = 0;
             this.label5.Text = "Max Triangles per Cube";
             // 
+            // SaveBackgroundWorker
+            // 
+            this.SaveBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SaveBackgroundWorker_DoWork);
+            this.SaveBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SaveBackgroundWorker_RunWorkerCompleted);
+            // 
+            // ResetOctreeMax
+            // 
+            this.ResetOctreeMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResetOctreeMax.Location = new System.Drawing.Point(401, 19);
+            this.ResetOctreeMax.Name = "ResetOctreeMax";
+            this.ResetOctreeMax.Size = new System.Drawing.Size(53, 20);
+            this.ResetOctreeMax.TabIndex = 4;
+            this.ResetOctreeMax.Text = "Reset";
+            this.ResetOctreeMax.UseVisualStyleBackColor = true;
+            this.ResetOctreeMax.Click += new System.EventHandler(this.ResetOctreeMax_Click);
+            // 
+            // ResetOctreeMin
+            // 
+            this.ResetOctreeMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResetOctreeMin.Location = new System.Drawing.Point(401, 45);
+            this.ResetOctreeMin.Name = "ResetOctreeMin";
+            this.ResetOctreeMin.Size = new System.Drawing.Size(53, 20);
+            this.ResetOctreeMin.TabIndex = 5;
+            this.ResetOctreeMin.Text = "Reset";
+            this.ResetOctreeMin.UseVisualStyleBackColor = true;
+            this.ResetOctreeMin.Click += new System.EventHandler(this.ResetOctreeMin_Click);
+            // 
+            // PresetsToolStripMenuItem
+            // 
+            this.PresetsToolStripMenuItem.Name = "PresetsToolStripMenuItem";
+            this.PresetsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.PresetsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.PresetsToolStripMenuItem.Text = "Presets";
+            this.PresetsToolStripMenuItem.Click += new System.EventHandler(this.PresetsToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 337);
+            this.ClientSize = new System.Drawing.Size(484, 337);
             this.Controls.Add(this.OctreeGroupBox);
-            this.Controls.Add(this.CollisionCodeGroupBox);
+            this.Controls.Add(this.PaGroupBox);
             this.Controls.Add(this.MainFormMenuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MainFormMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(470, 376);
             this.Name = "MainForm";
             this.Text = "Neo KCL Creator";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.MainFormMenuStrip.ResumeLayout(false);
             this.MainFormMenuStrip.PerformLayout();
-            this.CollisionCodeGroupBox.ResumeLayout(false);
-            this.CollisionCodeGroupBox.PerformLayout();
+            this.PaGroupBox.ResumeLayout(false);
+            this.PaGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CameraIDNumericUpDown)).EndInit();
             this.OctreeGroupBox.ResumeLayout(false);
             this.OctreeGroupBox.PerformLayout();
@@ -446,18 +473,13 @@ namespace NeoKCLCreate
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SaveAsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CopyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem ExportToolStripMenuItem;
-        private System.Windows.Forms.GroupBox CollisionCodeGroupBox;
+        private System.Windows.Forms.GroupBox PaGroupBox;
         private System.Windows.Forms.NumericUpDown CameraIDNumericUpDown;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox GroupListBox;
@@ -473,6 +495,11 @@ namespace NeoKCLCreate
         private System.Windows.Forms.NumericUpDown MaxTrianglesNumericUpDown;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.ComponentModel.BackgroundWorker SaveBackgroundWorker;
+        private System.Windows.Forms.Button ResetOctreeMin;
+        private System.Windows.Forms.Button ResetOctreeMax;
+        private System.Windows.Forms.ToolStripMenuItem PresetsToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
