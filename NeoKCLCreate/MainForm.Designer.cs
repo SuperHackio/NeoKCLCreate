@@ -62,7 +62,8 @@ namespace NeoKCLCreate
             this.ResetOctreeMax = new System.Windows.Forms.Button();
             this.ResetOctreeMin = new System.Windows.Forms.Button();
             this.PresetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.ExportBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.LoadBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.MainFormMenuStrip.SuspendLayout();
             this.PaGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CameraIDNumericUpDown)).BeginInit();
@@ -212,7 +213,7 @@ namespace NeoKCLCreate
             // 
             this.CameraThroughCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CameraThroughCheckBox.AutoSize = true;
-            this.CameraThroughCheckBox.Location = new System.Drawing.Point(257, 126);
+            this.CameraThroughCheckBox.Location = new System.Drawing.Point(232, 126);
             this.CameraThroughCheckBox.Name = "CameraThroughCheckBox";
             this.CameraThroughCheckBox.Size = new System.Drawing.Size(141, 17);
             this.CameraThroughCheckBox.TabIndex = 7;
@@ -224,7 +225,7 @@ namespace NeoKCLCreate
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(182, 102);
+            this.label4.Location = new System.Drawing.Point(157, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 6;
@@ -237,9 +238,9 @@ namespace NeoKCLCreate
             this.WallCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.WallCodeComboBox.FormattingEnabled = true;
             this.WallCodeComboBox.IntegralHeight = false;
-            this.WallCodeComboBox.Location = new System.Drawing.Point(257, 99);
+            this.WallCodeComboBox.Location = new System.Drawing.Point(232, 99);
             this.WallCodeComboBox.Name = "WallCodeComboBox";
-            this.WallCodeComboBox.Size = new System.Drawing.Size(197, 21);
+            this.WallCodeComboBox.Size = new System.Drawing.Size(222, 21);
             this.WallCodeComboBox.TabIndex = 5;
             this.WallCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.WallCodeComboBox_SelectedIndexChanged);
             // 
@@ -250,9 +251,9 @@ namespace NeoKCLCreate
             this.FloorCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FloorCodeComboBox.FormattingEnabled = true;
             this.FloorCodeComboBox.IntegralHeight = false;
-            this.FloorCodeComboBox.Location = new System.Drawing.Point(257, 72);
+            this.FloorCodeComboBox.Location = new System.Drawing.Point(232, 72);
             this.FloorCodeComboBox.Name = "FloorCodeComboBox";
-            this.FloorCodeComboBox.Size = new System.Drawing.Size(197, 21);
+            this.FloorCodeComboBox.Size = new System.Drawing.Size(222, 21);
             this.FloorCodeComboBox.TabIndex = 4;
             this.FloorCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.FloorCodeComboBox_SelectedIndexChanged);
             // 
@@ -264,9 +265,9 @@ namespace NeoKCLCreate
             this.SoundCodeComboBox.DropDownWidth = 160;
             this.SoundCodeComboBox.FormattingEnabled = true;
             this.SoundCodeComboBox.IntegralHeight = false;
-            this.SoundCodeComboBox.Location = new System.Drawing.Point(257, 45);
+            this.SoundCodeComboBox.Location = new System.Drawing.Point(232, 45);
             this.SoundCodeComboBox.Name = "SoundCodeComboBox";
-            this.SoundCodeComboBox.Size = new System.Drawing.Size(197, 21);
+            this.SoundCodeComboBox.Size = new System.Drawing.Size(222, 21);
             this.SoundCodeComboBox.TabIndex = 3;
             this.SoundCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.SoundCodeComboBox_SelectedIndexChanged);
             // 
@@ -274,7 +275,7 @@ namespace NeoKCLCreate
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(182, 48);
+            this.label2.Location = new System.Drawing.Point(157, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 0;
@@ -284,7 +285,7 @@ namespace NeoKCLCreate
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(182, 75);
+            this.label3.Location = new System.Drawing.Point(157, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 1;
@@ -293,14 +294,14 @@ namespace NeoKCLCreate
             // CameraIDNumericUpDown
             // 
             this.CameraIDNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CameraIDNumericUpDown.Location = new System.Drawing.Point(257, 19);
+            this.CameraIDNumericUpDown.Location = new System.Drawing.Point(232, 19);
             this.CameraIDNumericUpDown.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.CameraIDNumericUpDown.Name = "CameraIDNumericUpDown";
-            this.CameraIDNumericUpDown.Size = new System.Drawing.Size(197, 20);
+            this.CameraIDNumericUpDown.Size = new System.Drawing.Size(222, 20);
             this.CameraIDNumericUpDown.TabIndex = 2;
             this.CameraIDNumericUpDown.Value = new decimal(new int[] {
             255,
@@ -313,7 +314,7 @@ namespace NeoKCLCreate
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(182, 21);
+            this.label1.Location = new System.Drawing.Point(157, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 1;
@@ -328,7 +329,7 @@ namespace NeoKCLCreate
             this.GroupListBox.IntegralHeight = false;
             this.GroupListBox.Location = new System.Drawing.Point(6, 19);
             this.GroupListBox.Name = "GroupListBox";
-            this.GroupListBox.Size = new System.Drawing.Size(170, 188);
+            this.GroupListBox.Size = new System.Drawing.Size(145, 188);
             this.GroupListBox.TabIndex = 0;
             this.GroupListBox.SelectedIndexChanged += new System.EventHandler(this.GroupListBox_SelectedIndexChanged);
             // 
@@ -402,7 +403,9 @@ namespace NeoKCLCreate
             // 
             // SaveBackgroundWorker
             // 
+            this.SaveBackgroundWorker.WorkerReportsProgress = true;
             this.SaveBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SaveBackgroundWorker_DoWork);
+            this.SaveBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.SaveBackgroundWorker_ProgressChanged);
             this.SaveBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SaveBackgroundWorker_RunWorkerCompleted);
             // 
             // ResetOctreeMax
@@ -434,6 +437,20 @@ namespace NeoKCLCreate
             this.PresetsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.PresetsToolStripMenuItem.Text = "Presets";
             this.PresetsToolStripMenuItem.Click += new System.EventHandler(this.PresetsToolStripMenuItem_Click);
+            // 
+            // ExportBackgroundWorker
+            // 
+            this.ExportBackgroundWorker.WorkerReportsProgress = true;
+            this.ExportBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ExportBackgroundWorker_DoWork);
+            this.ExportBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ExportBackgroundWorker_ProgressChanged);
+            this.ExportBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.ExportBackgroundWorker_RunWorkerCompleted);
+            // 
+            // LoadBackgroundWorker
+            // 
+            this.LoadBackgroundWorker.WorkerReportsProgress = true;
+            this.LoadBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LoadBackgroundWorker_DoWork);
+            this.LoadBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.LoadBackgroundWorker_ProgressChanged);
+            this.LoadBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LoadBackgroundWorker_RunWorkerCompleted);
             // 
             // MainForm
             // 
@@ -499,7 +516,8 @@ namespace NeoKCLCreate
         private System.Windows.Forms.Button ResetOctreeMin;
         private System.Windows.Forms.Button ResetOctreeMax;
         private System.Windows.Forms.ToolStripMenuItem PresetsToolStripMenuItem;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker ExportBackgroundWorker;
+        private System.ComponentModel.BackgroundWorker LoadBackgroundWorker;
     }
 }
 
