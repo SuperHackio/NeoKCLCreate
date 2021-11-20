@@ -42,6 +42,7 @@ namespace NeoKCLCreate
             this.CopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.PresetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PaGroupBox = new System.Windows.Forms.GroupBox();
             this.CameraThroughCheckBox = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,14 +55,13 @@ namespace NeoKCLCreate
             this.label1 = new System.Windows.Forms.Label();
             this.GroupListBox = new System.Windows.Forms.ListBox();
             this.OctreeGroupBox = new System.Windows.Forms.GroupBox();
+            this.ResetOctreeMin = new System.Windows.Forms.Button();
+            this.ResetOctreeMax = new System.Windows.Forms.Button();
             this.MinCubeSizeNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MaxTrianglesNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.SaveBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.ResetOctreeMax = new System.Windows.Forms.Button();
-            this.ResetOctreeMin = new System.Windows.Forms.Button();
-            this.PresetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExportBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.LoadBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.MainFormMenuStrip.SuspendLayout();
@@ -103,7 +103,7 @@ namespace NeoKCLCreate
             this.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.NewToolStripMenuItem.Name = "NewToolStripMenuItem";
             this.NewToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.NewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.NewToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.NewToolStripMenuItem.Text = "&New";
             this.NewToolStripMenuItem.Click += new System.EventHandler(this.NewToolStripMenuItem_Click);
             // 
@@ -113,14 +113,14 @@ namespace NeoKCLCreate
             this.OpenToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
             this.OpenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.OpenToolStripMenuItem.Text = "&Open";
             this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(183, 6);
             // 
             // SaveToolStripMenuItem
             // 
@@ -128,26 +128,29 @@ namespace NeoKCLCreate
             this.SaveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
             this.SaveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.SaveToolStripMenuItem.Text = "&Save";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // SaveAsToolStripMenuItem
             // 
             this.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem";
-            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.SaveAsToolStripMenuItem.Text = "Save &As";
             this.SaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(183, 6);
             // 
             // ExportToolStripMenuItem
             // 
             this.ExportToolStripMenuItem.Name = "ExportToolStripMenuItem";
-            this.ExportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExportToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.ExportToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.ExportToolStripMenuItem.Text = "Export";
             this.ExportToolStripMenuItem.Click += new System.EventHandler(this.ExportToolStripMenuItem_Click);
             // 
@@ -168,7 +171,7 @@ namespace NeoKCLCreate
             this.CopyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
             this.CopyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.CopyToolStripMenuItem.Text = "&Copy";
             this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
@@ -178,14 +181,22 @@ namespace NeoKCLCreate
             this.PasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem";
             this.PasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.PasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.PasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.PasteToolStripMenuItem.Text = "&Paste";
             this.PasteToolStripMenuItem.Click += new System.EventHandler(this.PasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            // 
+            // PresetsToolStripMenuItem
+            // 
+            this.PresetsToolStripMenuItem.Name = "PresetsToolStripMenuItem";
+            this.PresetsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.PresetsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.PresetsToolStripMenuItem.Text = "Presets";
+            this.PresetsToolStripMenuItem.Click += new System.EventHandler(this.PresetsToolStripMenuItem_Click);
             // 
             // PaGroupBox
             // 
@@ -350,6 +361,28 @@ namespace NeoKCLCreate
             this.OctreeGroupBox.TabStop = false;
             this.OctreeGroupBox.Text = "Octree Settings";
             // 
+            // ResetOctreeMin
+            // 
+            this.ResetOctreeMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResetOctreeMin.Location = new System.Drawing.Point(401, 45);
+            this.ResetOctreeMin.Name = "ResetOctreeMin";
+            this.ResetOctreeMin.Size = new System.Drawing.Size(53, 20);
+            this.ResetOctreeMin.TabIndex = 5;
+            this.ResetOctreeMin.Text = "Reset";
+            this.ResetOctreeMin.UseVisualStyleBackColor = true;
+            this.ResetOctreeMin.Click += new System.EventHandler(this.ResetOctreeMin_Click);
+            // 
+            // ResetOctreeMax
+            // 
+            this.ResetOctreeMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResetOctreeMax.Location = new System.Drawing.Point(401, 19);
+            this.ResetOctreeMax.Name = "ResetOctreeMax";
+            this.ResetOctreeMax.Size = new System.Drawing.Size(53, 20);
+            this.ResetOctreeMax.TabIndex = 4;
+            this.ResetOctreeMax.Text = "Reset";
+            this.ResetOctreeMax.UseVisualStyleBackColor = true;
+            this.ResetOctreeMax.Click += new System.EventHandler(this.ResetOctreeMax_Click);
+            // 
             // MinCubeSizeNumericUpDown
             // 
             this.MinCubeSizeNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -407,36 +440,6 @@ namespace NeoKCLCreate
             this.SaveBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SaveBackgroundWorker_DoWork);
             this.SaveBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.SaveBackgroundWorker_ProgressChanged);
             this.SaveBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SaveBackgroundWorker_RunWorkerCompleted);
-            // 
-            // ResetOctreeMax
-            // 
-            this.ResetOctreeMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResetOctreeMax.Location = new System.Drawing.Point(401, 19);
-            this.ResetOctreeMax.Name = "ResetOctreeMax";
-            this.ResetOctreeMax.Size = new System.Drawing.Size(53, 20);
-            this.ResetOctreeMax.TabIndex = 4;
-            this.ResetOctreeMax.Text = "Reset";
-            this.ResetOctreeMax.UseVisualStyleBackColor = true;
-            this.ResetOctreeMax.Click += new System.EventHandler(this.ResetOctreeMax_Click);
-            // 
-            // ResetOctreeMin
-            // 
-            this.ResetOctreeMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResetOctreeMin.Location = new System.Drawing.Point(401, 45);
-            this.ResetOctreeMin.Name = "ResetOctreeMin";
-            this.ResetOctreeMin.Size = new System.Drawing.Size(53, 20);
-            this.ResetOctreeMin.TabIndex = 5;
-            this.ResetOctreeMin.Text = "Reset";
-            this.ResetOctreeMin.UseVisualStyleBackColor = true;
-            this.ResetOctreeMin.Click += new System.EventHandler(this.ResetOctreeMin_Click);
-            // 
-            // PresetsToolStripMenuItem
-            // 
-            this.PresetsToolStripMenuItem.Name = "PresetsToolStripMenuItem";
-            this.PresetsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.PresetsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.PresetsToolStripMenuItem.Text = "Presets";
-            this.PresetsToolStripMenuItem.Click += new System.EventHandler(this.PresetsToolStripMenuItem_Click);
             // 
             // ExportBackgroundWorker
             // 
