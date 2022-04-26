@@ -59,8 +59,8 @@
             this.InfoLabel.Size = new System.Drawing.Size(251, 221);
             this.InfoLabel.TabIndex = 1;
             this.InfoLabel.Text = "[Preset Name]\r\n\r\nCamera: [Camera ID]\r\nSound: [Sound]\r\nFloor: [Floor]\r\nWall: [Wall" +
-    "]\r\nCamera Collision: [Camera Through]\r\n\r\nThis is dummy text so that I can sample" +
-    " out how this form will look";
+    "]\r\nCamera Collision: [Camera Through]\r\n\r\nSelect a preset on the left to see deta" +
+    "ils!";
             // 
             // ApplyButton
             // 
@@ -84,7 +84,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(470, 310);
             this.Name = "PresetForm";
-            this.Text = "PresetForm";
+            this.Text = "Neo KCL Creator - Presets";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PresetForm_FormClosing);
             this.ResumeLayout(false);
 

@@ -19,7 +19,11 @@ namespace NeoKCLCreate
     public partial class MainForm : Form
     {
         const string NAME = "Neo KCL Creator";
-        public MainForm()
+        OpenFileDialog kclofd = new OpenFileDialog() { Filter = "KCollision file|*.kcl" };
+        OpenFileDialog objofd = new OpenFileDialog() { Filter = "Wavefront Obj|*.obj" };
+        SaveFileDialog kclsfd = new SaveFileDialog() { Filter = "KCollision file|*.kcl" };
+        SaveFileDialog objsfd = new SaveFileDialog() { Filter = "Wavefront Obj|*.obj" };
+        public MainForm(string[] args)
         {
             InitializeComponent();
             CenterToScreen();
@@ -34,6 +38,19 @@ namespace NeoKCLCreate
 
             PF = new PresetForm(this);
             SetAppStatus(false);
+
+            if (args.Length > 0 && File.Exists(args[0]))
+            {
+                FileInfo fi = new FileInfo(args[0]);
+                string pa = Path.Combine(fi.DirectoryName, fi.Name.Replace(fi.Extension, ".pa"));
+                if (!File.Exists(pa))
+                {
+                    MessageBox.Show($"Failed to find {fi.Name.Replace(fi.Extension, ".pa")}!");
+                    return;
+                }
+
+                LoadBackgroundWorker.RunWorkerAsync(new object[] { 0, args[0] });
+            }
         }
 
         PresetForm PF;
@@ -66,27 +83,25 @@ namespace NeoKCLCreate
         /// <param name="e"></param>
         private void NewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog() { Filter = "Wavefront Obj|*.obj" };
-            if (ofd.ShowDialog() != DialogResult.OK)
+            if (objofd.ShowDialog() != DialogResult.OK)
                 return;
 
             Text = $"{NAME} - Loading Wavefront Object...";
             Invalidate();
             Update();
-            CurrentKCL = WavefrontObj.OpenWavefront(ofd.FileName);
+            CurrentKCL = WavefrontObj.OpenWavefront(objofd.FileName);
             CollisionCodes = KCL.PaEntry.CreateBCSV(CurrentKCL);
             LoadKCLDataToListBox(CurrentKCL);
-            LastUsedFilename = ofd.FileName;
+            LastUsedFilename = objofd.FileName;
             SetAppStatus(true);
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog() { Filter = "KCollision file|*.kcl" };
-            if (ofd.ShowDialog() != DialogResult.OK)
+            if (kclofd.ShowDialog() != DialogResult.OK)
                 return;
 
-            FileInfo fi = new FileInfo(ofd.FileName);
+            FileInfo fi = new FileInfo(kclofd.FileName);
             string pa = Path.Combine(fi.DirectoryName, fi.Name.Replace(fi.Extension, ".pa"));
             if (!File.Exists(pa))
             {
@@ -94,7 +109,7 @@ namespace NeoKCLCreate
                 return;
             }
 
-            LoadBackgroundWorker.RunWorkerAsync(new object[] { 0, ofd.FileName });
+            LoadBackgroundWorker.RunWorkerAsync(new object[] { 0, kclofd.FileName });
         }
 
         private (KCL, BCSV) LoadKCL(string file)
@@ -138,13 +153,13 @@ namespace NeoKCLCreate
             if (CurrentKCL is null)
                 return;
             FileInfo fi = new FileInfo(LastUsedFilename);
-            SaveFileDialog sfd = new SaveFileDialog() { Filter = "KCollision file|*.kcl", FileName = fi.Name.Replace(fi.Extension, ".kcl") };
-            if (sfd.ShowDialog() != DialogResult.OK)
+            kclsfd.FileName = fi.Name.Replace(fi.Extension, ".kcl");
+            if (kclsfd.ShowDialog() != DialogResult.OK)
                 return;
-            LastUsedFilename = sfd.FileName;
+            LastUsedFilename = kclsfd.FileName;
             Text += " (Building KCL...)";
             SetAppStatus(false);
-            SaveBackgroundWorker.RunWorkerAsync(sfd.FileName);
+            SaveBackgroundWorker.RunWorkerAsync(kclsfd.FileName);
             LastUsedFilename = _lufn;
         }
 
@@ -154,12 +169,12 @@ namespace NeoKCLCreate
                 return;
 
             FileInfo fi = new FileInfo(LastUsedFilename);
-            SaveFileDialog sfd = new SaveFileDialog() { Filter = "Wavefront Obj|*.obj", FileName = fi.Name.Replace(fi.Extension, ".obj") };
-            if (sfd.ShowDialog() != DialogResult.OK)
+            objsfd.FileName = fi.Name.Replace(fi.Extension, ".obj");
+            if (objsfd.ShowDialog() != DialogResult.OK)
                 return;
 
             SetAppStatus(false);
-            ExportBackgroundWorker.RunWorkerAsync(sfd.FileName);
+            ExportBackgroundWorker.RunWorkerAsync(objsfd.FileName);
         }
 
         private void GroupListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -259,6 +274,13 @@ namespace NeoKCLCreate
             ((KCL.PaEntry)CollisionCodes[GroupListBox.SelectedIndex]).FloorCode = floor;
             ((KCL.PaEntry)CollisionCodes[GroupListBox.SelectedIndex]).WallCode = wall;
             ((KCL.PaEntry)CollisionCodes[GroupListBox.SelectedIndex]).CameraThrough = through ? 1 : 0;
+
+            CameraIDNumericUpDown.Value = ((KCL.PaEntry)CollisionCodes[GroupListBox.SelectedIndex]).CameraID;
+            SoundCodeComboBox.SelectedIndex = ((KCL.PaEntry)CollisionCodes[GroupListBox.SelectedIndex]).SoundCode;
+            FloorCodeComboBox.SelectedIndex = ((KCL.PaEntry)CollisionCodes[GroupListBox.SelectedIndex]).FloorCode;
+            WallCodeComboBox.SelectedIndex = ((KCL.PaEntry)CollisionCodes[GroupListBox.SelectedIndex]).WallCode;
+            CameraThroughCheckBox.Checked = ((KCL.PaEntry)CollisionCodes[GroupListBox.SelectedIndex]).CameraThrough > 0;
+            Refresh();
         }
 
         private void LoadBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -366,7 +388,7 @@ namespace NeoKCLCreate
         {
             if ((int)e.UserState == 0)
             {
-                Text = $"{NAME} - Preparing Obj Export...";
+                Text = $"{NAME} - Preparing Obj Export... {e.ProgressPercentage}%";
             }
             else
             {
@@ -381,6 +403,8 @@ namespace NeoKCLCreate
             MessageBox.Show("Collision Exported to OBJ!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LastUsedFilename = LastUsedFilename; //Reset the text
             SetAppStatus(true);
+            TaskbarProgress.SetState(Handle, TaskbarProgress.TaskbarStates.NoProgress);
+            TaskbarProgress.SetValue(Handle, 0, 100);
         }
 
 
