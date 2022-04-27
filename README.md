@@ -14,7 +14,7 @@ Visually, it looks very similar to the original KCLCreate. There are a few key d
 
 
 # How to use
-## Creating a new KCL file
+## How to create a new KCL file
 1. When creating your model, you must make sure you triangulate it!
 2. Export it in the Wavefront Obj (.obj) file format
 3. In NeoKCLCreate, use the File>New ([CTRL]+[N]) and load the obj.
