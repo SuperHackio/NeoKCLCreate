@@ -64,6 +64,7 @@ namespace NeoKCLCreate
             this.SaveBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.ExportBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.LoadBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.CrushBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.MainFormMenuStrip.SuspendLayout();
             this.PaGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CameraIDNumericUpDown)).BeginInit();
@@ -455,6 +456,12 @@ namespace NeoKCLCreate
             this.LoadBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.LoadBackgroundWorker_ProgressChanged);
             this.LoadBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LoadBackgroundWorker_RunWorkerCompleted);
             // 
+            // CrushBackgroundWorker
+            // 
+            this.CrushBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.CrushBackgroundWorker_DoWork);
+            this.CrushBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.CrushBackgroundWorker_ProgressChanged);
+            this.CrushBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.CrushBackgroundWorker_RunWorkerCompleted);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,6 +528,7 @@ namespace NeoKCLCreate
         private System.Windows.Forms.ToolStripMenuItem PresetsToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker ExportBackgroundWorker;
         private System.ComponentModel.BackgroundWorker LoadBackgroundWorker;
+        private System.ComponentModel.BackgroundWorker CrushBackgroundWorker;
     }
 }
 

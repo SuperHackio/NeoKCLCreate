@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("NeoKCLCreate")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Create KCLs with the power of NEO")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Super Hackio Incorporated")]
 [assembly: AssemblyProduct("NeoKCLCreate")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyCopyright("Copyright © Super Hackio Incorporated 2021-2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

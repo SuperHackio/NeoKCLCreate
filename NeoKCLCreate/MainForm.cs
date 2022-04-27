@@ -407,6 +407,21 @@ namespace NeoKCLCreate
             TaskbarProgress.SetValue(Handle, 0, 100);
         }
 
+        //These will be used in a future update
+        private void CrushBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void CrushBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void CrushBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
 
         public static class TaskbarProgress
         {
