@@ -65,6 +65,7 @@ namespace NeoKCLCreate
             this.ExportBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.LoadBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.CrushBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.CrushToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainFormMenuStrip.SuspendLayout();
             this.PaGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CameraIDNumericUpDown)).BeginInit();
@@ -161,7 +162,8 @@ namespace NeoKCLCreate
             this.CopyToolStripMenuItem,
             this.PasteToolStripMenuItem,
             this.toolStripSeparator4,
-            this.PresetsToolStripMenuItem});
+            this.PresetsToolStripMenuItem,
+            this.CrushToolStripMenuItem});
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
             this.EditToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.EditToolStripMenuItem.Text = "&Edit";
@@ -172,7 +174,7 @@ namespace NeoKCLCreate
             this.CopyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
             this.CopyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.CopyToolStripMenuItem.Text = "&Copy";
             this.CopyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
@@ -182,20 +184,20 @@ namespace NeoKCLCreate
             this.PasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem";
             this.PasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.PasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.PasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.PasteToolStripMenuItem.Text = "&Paste";
             this.PasteToolStripMenuItem.Click += new System.EventHandler(this.PasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // PresetsToolStripMenuItem
             // 
             this.PresetsToolStripMenuItem.Name = "PresetsToolStripMenuItem";
             this.PresetsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.PresetsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.PresetsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.PresetsToolStripMenuItem.Text = "Presets";
             this.PresetsToolStripMenuItem.Click += new System.EventHandler(this.PresetsToolStripMenuItem_Click);
             // 
@@ -458,9 +460,19 @@ namespace NeoKCLCreate
             // 
             // CrushBackgroundWorker
             // 
+            this.CrushBackgroundWorker.WorkerReportsProgress = true;
             this.CrushBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.CrushBackgroundWorker_DoWork);
             this.CrushBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.CrushBackgroundWorker_ProgressChanged);
             this.CrushBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.CrushBackgroundWorker_RunWorkerCompleted);
+            // 
+            // CrushToolStripMenuItem
+            // 
+            this.CrushToolStripMenuItem.Name = "CrushToolStripMenuItem";
+            this.CrushToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.CrushToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CrushToolStripMenuItem.Text = "Crush";
+            this.CrushToolStripMenuItem.Click += new System.EventHandler(this.CrushToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -529,6 +541,7 @@ namespace NeoKCLCreate
         private System.ComponentModel.BackgroundWorker ExportBackgroundWorker;
         private System.ComponentModel.BackgroundWorker LoadBackgroundWorker;
         private System.ComponentModel.BackgroundWorker CrushBackgroundWorker;
+        private System.Windows.Forms.ToolStripMenuItem CrushToolStripMenuItem;
     }
 }
 

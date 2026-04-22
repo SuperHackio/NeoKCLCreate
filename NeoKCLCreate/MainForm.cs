@@ -408,19 +408,52 @@ namespace NeoKCLCreate
         }
 
         //These will be used in a future update
+        private void CrushToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetAppStatus(false);
+            CrushBackgroundWorker.RunWorkerAsync();
+        }
+
         private void CrushBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            List<BCSVEntry> NewCollisionCodes = new List<BCSVEntry>();
 
+            for (int i = 0; i < CurrentKCL.Count; i++)
+            {
+                Triangle tri = CurrentKCL[i];
+                int id = tri.GroupIndex; //The BCSV Entry we want
+
+                BCSVEntry TargetEntry = CollisionCodes[id];
+                if (!NewCollisionCodes.Contains(TargetEntry))
+                    NewCollisionCodes.Add(TargetEntry);
+                tri.GroupIndex = NewCollisionCodes.IndexOf(TargetEntry);
+                CurrentKCL[i] = tri;
+
+                CrushBackgroundWorker.ReportProgress((int)Hack.io.Util.MathEx.GetPercentOf(i, CurrentKCL.Count), 0);
+            }
+            CrushBackgroundWorker.ReportProgress(100, 0);
+            CollisionCodes.Clear();
+            CollisionCodes.AddRange(NewCollisionCodes);
+            CurrentKCL.GroupNames.Clear();
+            for (int i = 0; i < NewCollisionCodes.Count; i++)
+                CurrentKCL.GroupNames.Add($"Group {i}");
         }
 
         private void CrushBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-
+            if ((int)e.UserState == 0)
+                Text = $"{NAME} - Crushing...{e.ProgressPercentage}%";
+            TaskbarProgress.SetState(Handle, TaskbarProgress.TaskbarStates.Normal);
+            TaskbarProgress.SetValue(Handle, e.ProgressPercentage, 100);
         }
 
         private void CrushBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            TaskbarProgress.SetState(Handle, TaskbarProgress.TaskbarStates.NoProgress);
+            TaskbarProgress.SetValue(Handle, 0, 100);
+            Text = $"{NAME} - KCL Crushed!";
+            LoadKCLDataToListBox(CurrentKCL);
+            SetAppStatus(true);
         }
 
         public static class TaskbarProgress

@@ -1,0 +1,166 @@
+body
+{
+	background-color	: rgb(255,255,255);
+	color				: rgb(0,0,0);
+}
+
+H1
+{
+	font-family			: "ÇlÇr ÇoÉSÉVÉbÉN", "Osaka";
+	font-weight			: bold;
+	font-size			: 36px;
+
+	margin				: 0px 0px 20px  0px;
+	padding				: 0px 0px  0px 10px;
+
+	border-style		: none none solid none;
+	border-width		: 5px;
+	border-color		: #48f;
+}
+
+H2
+{
+	font-weight			: bold;
+	font-size			: 20px;
+
+	margin				: 30px 0px 10px  0px;
+	padding				:  0px 0px  0px 10px;
+
+	border-style		: none none solid double;
+	border-width		: 0px 0px 2px 8px;
+	border-color		: #49f;
+; font-family: "ÇlÇr ÇoÉSÉVÉbÉN", "Osaka"
+}
+
+H3
+{
+	font-family			: "ÇlÇr ÇoÉSÉVÉbÉN", "Osaka";
+	font-weight			: bold;
+	font-size			: 12px;
+
+	margin				: 20px 0px 10px 20px;
+	padding				: 0px;
+}
+
+H4
+{
+	font-family			: "ÇlÇr ÇoÉSÉVÉbÉN", "Osaka";
+	font-weight			: normal;
+	font-size			: 12px;
+
+	margin				: 0px 10px 20px 10px;
+	padding				: 0px 0px  0px 10px;
+}
+
+P
+{
+	font-family			: "ÇlÇr ÇoÉSÉVÉbÉN", "Osaka";
+	font-weight			: normal;
+	font-size			: 10pt;
+
+	margin				: 0px 8px 10px 20px;
+	padding				: 0px;
+}
+
+PRE
+{
+	font-family			: "ÇlÇr ÇoÉSÉVÉbÉN", "Osaka";
+	font-weight			: normal;
+	font-size			: 10pt;
+	line-height			: 60%;
+
+	margin				: 0px 20px 10px 30px;
+	padding				: 7px 5px;
+
+	background-color	: #eee;
+}
+
+STRONG
+{
+	font-family			: "ÇlÇr ÇoÉSÉVÉbÉN", "Osaka";
+	font-weight			: bold;
+	font-size			: 10pt;
+	color				: red;
+}
+
+EM
+{
+	color				: blue;
+; font-family: "ÇlÇr ÇoÉSÉVÉbÉN", "Osaka"
+}
+
+UL
+{
+	font-family			: "ÇlÇr ÇoÉSÉVÉbÉN", "Osaka";
+	font-weight			: normal;
+	font-size			: 10pt;
+
+	margin				: 0px 8px 10px 40px;
+	padding				: 0px;
+}
+
+OL
+{
+	font-family			: Arial;
+	font-weight			: normal;
+	font-size			: 10pt;
+
+	margin				: 0px 8px 10px 50px;
+	padding				: 0px;
+
+	list-style-type		: decimal;
+}
+
+LI
+{
+	margin				: 0px 8px 2px 16px;
+	padding				: 0px;
+}
+
+/***********************************************************************
+	à¯êîãLèqópÉXÉ^ÉCÉã
+ ***********************************************************************/
+
+TABLE.arguments
+{
+	font-family			: Arial;
+	font-size			: 10pt;
+
+	width				: 95%;
+	padding				: 0px;
+	margin-left			: 20px;
+
+	border-style		: none;
+
+}
+
+TABLE.arguments TH
+{
+	font-style			: normal;
+	font-weight			: bold;
+	text-align			: right;
+
+	width				: 20%;
+	padding				: 2px 8px 2px 4px;
+	margin				: 0px;
+
+	border-width		: 2pt;
+	border-style		: none;
+	background			: #ddf;
+; font-family: "ÇlÇr ÇoÉSÉVÉbÉN", "Osaka"
+
+}
+
+TABLE.arguments TD
+{
+	font-style			: normal;
+	font-weight			: normal;
+	text-align			: left;
+	padding				: 2px 4px;
+	margin				: 0px;
+	border-width		: 2pt;
+	border-style		: none;
+	background			: #ddf;
+	;
+	font-family: "ÇlÇr ÇoÉSÉVÉbÉN", "Osaka";
+}

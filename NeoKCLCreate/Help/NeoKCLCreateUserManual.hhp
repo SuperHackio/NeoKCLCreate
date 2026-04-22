@@ -1,0 +1,13 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=NeoKCLCreateUserManual.chm
+Contents file=Table of Contents.hhc
+Default topic=html/Title.htm
+Display compile progress=No
+Index file=Index.hhk
+Language=0x1009 English (Canada)
+Title=Neo KCL Creator User Manual
+
+
+[INFOTYPES]
+

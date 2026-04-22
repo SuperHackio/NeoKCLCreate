@@ -106,6 +106,10 @@
       <Project>{4f4162cc-70ff-4eb9-ab34-d5ff98490c34}</Project>
       <Name>Hack.io.RARC</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Hack.io\Hack.io\Hack.io.csproj">
+      <Project>{389f751d-db2a-4746-b3bc-88e106c361ce}</Project>
+      <Name>Hack.io</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="KClIcon.ico" />

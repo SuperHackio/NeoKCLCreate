@@ -1,0 +1,233 @@
+/*****************************************************************************
+	メインページ用スタイルシート
+
+ *****************************************************************************/
+
+body
+{
+	font-family			: Arial;
+	font-size			: 10pt;
+
+	background-color	: #fff;
+	color				: #111;
+}
+
+
+/*============================================================
+	タイトル
+ *============================================================*/
+
+div.title
+{
+	font-family			: Arial;
+	font-size			: 20pt;
+	font-weight			: bold;
+
+	text-align			: left;
+
+	margin				: 10px 0px 10px 50px;
+}
+
+div.version
+{
+	font-family			: Arial;
+	font-size			: 12pt;
+	font-weight			: bold;
+	color				: #f00;
+
+	text-align			: right;
+	margin				: 0px 30px 20px 0px;
+}
+
+
+/*============================================================
+	注意書き
+ *============================================================*/
+
+p.confidential
+{
+	font-family			: Arial;
+	font-size			: 10pt;
+	font-weight			: bold;
+	color				: #000;
+
+	text-align			: left;
+	margin				: 0px 20px 10px 20px;
+}
+
+p.caution-en
+{
+	font-family			: Arial;
+	font-size			: 8pt;
+	font-weight			: normal;
+	color				: #333;
+	text-align			: left;
+	margin				: 0px 20px 20px 20px;
+}
+
+p.caution-jp
+{
+	font-family			: Arial;
+	font-size			: 8pt;
+	font-weight			: bold;
+	color				: #000;
+	background-color	: #fe0;
+	text-align			: left;
+	margin				: 0px 0px 4px 10px;
+	padding				: 4px 4px 4px 30px;
+}
+
+p.copyright
+{
+	font-family			: Arial;
+	font-size			: 8pt;
+	font-weight			: bold;
+	color				: #000;
+	text-align			: right;
+	margin				: 0px 10px 0px 0px;
+}
+
+p.browser
+{
+	font-family			: Arial;
+	font-size			: 9pt;
+	font-weight			: bold;
+	color				: #e0f;
+	text-align			: right;
+	margin				: 20px 10px 0px 0px;
+}
+
+hr
+{
+	height				: 4px;
+	color				: #48f;
+	margin				: 4px 0px 4px 10px;
+}
+
+
+/*============================================================
+	見出し
+ *============================================================*/
+
+h1
+{
+	font-family			: Arial;
+	font-size			: 12pt;
+	font-weight			: bold;
+	text-decoration		: underline;
+	color				: #000;
+	text-align			: left;
+	margin				: 10px 0px 20px 20px;
+}
+
+h2
+{
+	font-family			: Arial;
+	font-size			: 12pt;
+	font-weight			: bold;
+	text-decoration		: none;
+	margin				: 20px 0px 0px 40px;
+}
+
+
+/*============================================================
+	更新内容テーブル
+ *============================================================*/
+
+table
+{
+	text-align			: left;
+	border-width		: 0pt;
+	margin-left			: 70px;
+	margin-right		: auto;
+}
+
+td
+{
+	font-family			: Arial;
+	font-size			: 10pt;
+	font-weight			: normal;
+}
+
+
+/*============================================================
+	説明記述
+ *============================================================*/
+
+p
+{
+	font-family			: Arial;
+	font-weight			: normal;
+	font-size			: 10pt;
+
+	margin				: 0px 8px 10px 20px;
+	padding				: 0px;
+}
+
+pre
+{
+	font-family			: "Courier New", monospace;
+	font-weight			: normal;
+	font-size			: 10pt;
+
+	margin				: 0px 20px 10px 30px;
+	padding				: 2px 4px 2px 4px;
+
+	background-color	: #eee;
+}
+
+ul
+{
+	font-family			: Arial;
+	font-weight			: normal;
+	font-size			: 10pt;
+
+	margin				: 0px 8px 10px 40px;
+	padding				: 0px;
+}
+
+ol
+{
+	font-family			: Arial;
+	font-weight			: normal;
+	font-size			: 10pt;
+
+	margin				: 0px 8px 10px 50px;
+	padding				: 0px;
+
+	list-style-type		: decimal;
+}
+
+li
+{
+	margin				: 0px 8px 2px 16px;
+	padding				: 0px;
+}
+
+
+/*============================================================
+	リンク
+ *============================================================*/
+
+a
+{
+	color				: inherit;
+	background-color	: inherit;
+	text-decoration		: none;
+}
+
+a:visited
+{
+	color				: inherit;
+}
+
+a:hover
+{
+	background-color	: #fe4;
+	text-decoration		: underline;
+}
+
+a:active
+{
+	color				: #ff0000;
+}

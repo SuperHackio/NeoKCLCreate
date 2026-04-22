@@ -1,0 +1,89 @@
+/*****************************************************************************
+	目次ページ用スタイルシート
+
+ *****************************************************************************/
+
+body
+{
+	color				: #111;
+	background-color	: #fff;
+}
+
+/*============================================================
+	目次
+ *============================================================*/
+
+ul.chapter
+{
+	list-style-type		: none;
+	margin-left			: 0em;
+}
+
+ul.chapter li
+{
+	margin-bottom		: 1em;
+}
+
+ul.section
+{
+	list-style-type		: none;
+	margin-left			: 1em;
+}
+
+ul.section li
+{
+	margin-bottom		: 0em;
+}
+
+ul.subsection
+{
+	list-style-type		: none;
+	margin-left			: 1em;
+}
+
+ul.subsection li
+{
+	margin-bottom		: 0em;
+}
+
+ul.subsubsection
+{
+	list-style-type		: none;
+	margin-left			: 1em;
+}
+
+ul.subsubsection li
+{
+	margin-bottom		: 0em;
+}
+
+ul.subsubsubsection
+{
+	list-style-type		: none;
+	margin-left			: 1em;
+}
+
+ul.subsubsubsection li
+{
+	margin-bottom		: 0em;
+}
+
+
+/*============================================================
+	リンク
+ *============================================================*/
+
+a:link
+{
+	color				: #00f;
+}
+
+a:visited
+{
+	color				: #808;
+}
+
+a:hover
+{
+	color				: #f00;
+}
