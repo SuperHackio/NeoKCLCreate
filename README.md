@@ -31,3 +31,10 @@ A modern and efficient collision importer for the Super Mario Galaxy games
 - You can export a visual representation of the Octree as well as the collision Geometry to see for yourself how the game finds triangles.
 - You can select and modify multiple materials at once by holding <kbd>Shift</kbd> or <kbd>Ctrl</kbd> when selecting materials in the list
 - You can choose to include the names of the materials that you are working with inside the .pa file in case you want to edit the .pa file again later (or just want to preserve the material names in general)
+
+
+### Libraries used
+- [Hack.io](https://github.com/SuperHackio/Hack.io ) for KCL and PA read/write functionality
+- [NAudio](https://github.com/naudio/naudio ) for sound code playback
+- [NAudio.Vorbis](https://github.com/naudio/Vorbis ) for loading .ogg sound files
+- [JeremyAnsel.Media.WavefrontObj](https://github.com/JeremyAnsel/JeremyAnsel.Media.WavefrontObj ) for processing .obj and .mtl files
