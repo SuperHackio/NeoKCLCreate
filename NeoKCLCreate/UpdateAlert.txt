@@ -1,0 +1,9 @@
+﻿1.5.0.0
+
+#Required
+#Notes
+- Update to .NET 8.0
+- Added the ability to Crush materials (Merge materials with the same properties)
+- Fixed a bug where a flat plane would have it's Octree size calculated incorrectly, greatly bloating the filesize
+- Improved the output filesizes overall
+- PA files can now optionally include the material names
