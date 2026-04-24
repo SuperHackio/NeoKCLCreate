@@ -117,12 +117,29 @@ public partial class MainForm : Form
         if (IF.ShowDialog() != DialogResult.OK)
             return;
 
-        ObjFile SourceObject = ObjFile.FromFile(path);
-        ObjMaterialFile? SourceMaterial = null;
         FileInfo fi = new(path);
-        string mtlname = Path.Combine(fi.DirectoryName!, fi.Name.Replace(fi.Extension, ".mtl"));
-        if (File.Exists(mtlname))
-            SourceMaterial = ObjMaterialFile.FromFile(mtlname);
+        ObjFile SourceObject;
+        try
+        {
+            SourceObject = ObjFile.FromFile(path);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message+"\n\nPlease validate your .obj file.", "Failed to read Wavefront Object", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+        ObjMaterialFile? SourceMaterial = null;
+        try
+        {
+            string mtlname = Path.Combine(fi.DirectoryName!, fi.Name.Replace(fi.Extension, ".mtl"));
+            if (File.Exists(mtlname))
+                SourceMaterial = ObjMaterialFile.FromFile(mtlname);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message + "\n\nPlease validate your .mtl file.", "Failed to read Material Library", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
 
         ImportProgressForm IPF = new(SourceObject, SourceMaterial, IF.PrismThickness, IF.ValueRounding, IF.MaximumTrianglesPerLeaf, IF.MinimumLeafSize, IF.MaximumDepth);
         ProgramColors.ReloadTheme(IPF);
