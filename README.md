@@ -24,6 +24,7 @@ A modern and efficient collision importer for the Super Mario Galaxy games
 
 
 ## Tips
+- You can hear a sound clip of the Sound Codes by right clicking on the "Sound Code" text when editing a material.
 - If you want to get rid of materials with identical settings, you can use Edit > Crush.
 - There are some presets available for you to use, which are commonly used materials in the galaxy games.
 - Opening an existing KCL you imported and simply resaving may result in a more optimized file than before.
