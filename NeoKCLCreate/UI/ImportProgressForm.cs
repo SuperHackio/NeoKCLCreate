@@ -402,6 +402,42 @@ public partial class ImportProgressForm : Form
 
             if (isNewLeaf)
             {
+                // This code will sort same-direction facing prisms heightwise
+                // and was intended to be used for fixing a bug with thin triangles but it didn't help
+                // so I am leaving this here for future me in case I want to allow this as an option or something
+
+                /*
+                IEnumerable<IGrouping<(int, int, int), ushort>> groups = containedTriangles
+                .GroupBy(i =>
+                {
+                    var n = Result.PrismList[i].FaceNormal;
+                    return (
+                        (int)MathF.Round(n.X * 16f),
+                        (int)MathF.Round(n.Y * 16f),
+                        (int)MathF.Round(n.Z * 16f)
+                    );
+                });
+
+                containedTriangles = [.. containedTriangles
+                    .GroupBy(i =>
+                    {
+                        var n = Result.PrismList[i].FaceNormal;
+
+                        static int Q(float v) => (int)MathF.Round(v * 16f);
+
+                        return (Q(n.X), Q(n.Y), Q(n.Z));
+                    })
+                    .SelectMany(g =>
+                        g.OrderByDescending(i =>
+                        {
+                            var p = Result.PrismList[i];
+                            return Vector3.Dot(p.Position, p.FaceNormal);
+                        })
+                        .ThenBy(i => i)
+                    )];
+                */
+                
+                
                 KCL.OctreeLeaf OL = [];
                 OL.AddRange(containedTriangles);
                 return OL;

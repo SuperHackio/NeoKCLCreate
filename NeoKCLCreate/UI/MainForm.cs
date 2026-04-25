@@ -430,6 +430,7 @@ public partial class MainForm : Form
         FileUtil.SaveFile(KCLPath, CollisionData.Save);
         FileUtil.SaveFile(PAPath, FinalPA.Save);
 
+        Program.IsUnsavedChanges = false;
         MessageBox.Show("Save Complete!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
