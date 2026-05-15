@@ -342,21 +342,32 @@ public partial class ImportProgressForm : Form
         {
             (A, B, C, Vector3 N) = GetFromObj(item);
 
-            if (testm is null)
-                return KCL.Prism.Create(A, B, C, N);
-
             ushort idx = 0;
-            string? matnme = item.MaterialName;
-            if (matnme is string str)
+            if (testm is not null)
+                if (item.MaterialName is string str)
+                    for (int i = 0; i < testm.Materials.Count; i++)
+                    {
+                        if (!str.Equals(testm.Materials[i].Name))
+                            continue;
+                        idx = (ushort)i;
+                    }
+
+            KCL.Prism? result = KCL.Prism.Create(A, B, C, N, idx);
+            if (result is not KCL.Prism prim)
+                return result;
+
+            prim.FaceNormal = RemoveTinyValues(prim.FaceNormal);
+            prim.EdgeANormal = RemoveTinyValues(prim.EdgeANormal);
+            prim.EdgeBNormal = RemoveTinyValues(prim.EdgeBNormal);
+            prim.EdgeCNormal = RemoveTinyValues(prim.EdgeCNormal);
+
+            return prim;
+
+            Vector3 RemoveTinyValues(Vector3 source)
             {
-                for (int i = 0; i < testm.Materials.Count; i++)
-                {
-                    if (!str.Equals(testm.Materials[i].Name))
-                        continue;
-                    idx = (ushort)i;
-                }
+                int round = 6;
+                return Vector3.Normalize(new(MathF.Round(source.X, round), MathF.Round(source.Y, round), MathF.Round(source.Z, round)));
             }
-            return KCL.Prism.Create(A, B, C, N, idx);
         }
 
         KCL.IOctreeNode CreateOctreeNode(List<int> ObjFaceIndexes, Vector3 cubePosition, float cubeSize, int maxTrianglesInCube, int maxCubeSize, int minCubeSize, int cubeBlow, int maxDepth, int depth = 0)
